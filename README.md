@@ -1,5 +1,9 @@
 # Proyek Analisis Data: Bike Sharing Dataset  
 
+**Nama**: Kunti Najma Jalia  
+**Email**: kuntinajma@gmail.com  
+**ID Dicoding**: MC466D5X1782  
+
 ## Deskripsi Proyek  
 Proyek ini bertujuan untuk menganalisis pola peminjaman sepeda berdasarkan dataset **Bike Sharing**. Analisis mencakup:  
 1. **Perbedaan pola peminjaman antara pelanggan casual dan registered di Q4 2012**  
@@ -42,9 +46,11 @@ Link ini juga tersimpan di dalam file `url.txt` yang berada di folder utama.
 submission/
 │── dashboard/
 │   ├── dashboard.py        # Kode utama untuk dashboard Streamlit
+│   ├── main_day.csv        # Data harian (day dataset) untuk dashboard
+│   ├── main_hour.csv       # Data per jam (hour dataset) untuk dashboard
 │── data/
-│   ├── day.csv             # Data harian (day dataset)
-│   ├── hour.csv            # Data per jam (hour dataset)
+│   ├── day.csv             # Data mentah harian
+│   ├── hour.csv            # Data mentah per jam
 │── notebook.ipynb          # Analisis eksploratif di Jupyter Notebook
 │── requirements.txt        # Daftar library yang dibutuhkan
 │── url.txt                 # Link deploy Streamlit
