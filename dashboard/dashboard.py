@@ -49,7 +49,7 @@ if option == "Bagaimana perbedaan pola peminjaman antara pelanggan casual dan re
     
     ax.set_title("Tren Peminjaman Sepeda Harian (Casual vs Registered) - Q4 2012", fontsize=14, fontweight="bold")
     ax.set_xlabel("Tanggal")
-    ax.set_ylabel("Jumlah Peminjaman")
+    ax.set_ylabel("Jumlah Peminjaman (unit)")
     plt.xticks(rotation=45)
     
     st.pyplot(fig)
@@ -70,7 +70,7 @@ elif option == "Pada jam berapa peminjaman sepeda paling tinggi dalam sehari, da
     
     ax.set_title("Peminjaman Sepeda Berdasarkan Jam dan Hari", fontsize=14, fontweight="bold")
     ax.set_xlabel("Jam")
-    ax.set_ylabel("Rata-rata Peminjaman")
+    ax.set_ylabel("Rata-rata Peminjaman (unit)")
     
     st.pyplot(fig)
 
@@ -91,6 +91,6 @@ elif option == "Analisis Lanjutan Dengan Metode Clustering":
     
     ax.set_title("Distribusi Peminjaman Sepeda Berdasarkan Jam Sibuk dan Jam Sepi", fontsize=14, fontweight="bold")
     ax.set_xlabel("Jam")
-    ax.set_ylabel("Rata-rata Peminjaman")
+    ax.set_ylabel("Rata-rata Peminjaman (unit)")
     
     st.pyplot(fig)
