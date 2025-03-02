@@ -1,4 +1,3 @@
-
 # Proyek Analisis Data: Bike Sharing Dataset  
 
 ## Deskripsi Proyek  
@@ -26,25 +25,33 @@ venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 ```
 
-## Menjalankan Dashboard  
+## Menjalankan Dashboard Secara Lokal  
 ```bash
 streamlit run dashboard/dashboard.py
 ```
 Jika berjalan dengan benar, akan muncul tautan **http://localhost:8501/** untuk melihat dashboard interaktif.  
+
+## Link Deploy  
+Dashboard dapat diakses secara online melalui Streamlit Cloud:  
+🔗 **[Dashboard Bike Sharing](https://kuntinajmajalia.streamlit.app/)**  
+
+Link ini juga tersimpan di dalam file `url.txt` yang berada di folder utama.  
 
 ## Struktur Folder  
 ```
 submission/
 │── dashboard/
 │   ├── dashboard.py        # Kode utama untuk dashboard Streamlit
-│   ├── main_day.csv        # Data harian (day dataset)
-│   ├── main_hour.csv       # Data per jam (hour dataset)
+│── data/
+│   ├── day.csv             # Data harian (day dataset)
+│   ├── hour.csv            # Data per jam (hour dataset)
 │── notebook.ipynb          # Analisis eksploratif di Jupyter Notebook
 │── requirements.txt        # Daftar library yang dibutuhkan
+│── url.txt                 # Link deploy Streamlit
 │── README.md               # Dokumentasi proyek
 ```
 
 ## Fitur Dashboard  
 - Analisis perbedaan peminjaman antara pelanggan casual dan registered  
 - Analisis waktu peminjaman tertinggi  
-- Clustering jam sibuk dan jam sepi
+- Clustering jam sibuk dan jam sepi  
