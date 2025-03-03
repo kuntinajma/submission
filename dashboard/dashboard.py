@@ -38,14 +38,22 @@ if option == "Bagaimana perbedaan pola peminjaman antara pelanggan casual dan re
     # Filter data Q4 2012
     q4_2012 = day_df[(day_df["dteday"].dt.year == 2012) & (day_df["dteday"].dt.month.isin([10, 11, 12]))].copy()
 
+    # Tambahkan opsi checkbox untuk memilih kategori pengguna
+    show_casual = st.sidebar.checkbox("Tampilkan Casual", value=True)
+    show_registered = st.sidebar.checkbox("Tampilkan Registered", value=True)
+
     # Rolling average (7 hari) untuk tren lebih smooth
     q4_2012["casual_avg"] = q4_2012["casual"].rolling(window=7, min_periods=1).mean()
     q4_2012["registered_avg"] = q4_2012["registered"].rolling(window=7, min_periods=1).mean()
 
     # Plot
     fig, ax = plt.subplots(figsize=(12, 6))
-    sns.lineplot(x=q4_2012["dteday"], y=q4_2012["casual_avg"], label="Casual", color="red", linewidth=2, ax=ax)
-    sns.lineplot(x=q4_2012["dteday"], y=q4_2012["registered_avg"], label="Registered", color="blue", linewidth=2, ax=ax)
+    
+    if show_casual:
+        sns.lineplot(x=q4_2012["dteday"], y=q4_2012["casual_avg"], label="Casual", color="red", linewidth=2, ax=ax)
+    
+    if show_registered:
+        sns.lineplot(x=q4_2012["dteday"], y=q4_2012["registered_avg"], label="Registered", color="blue", linewidth=2, ax=ax)
     
     ax.set_title("Tren Peminjaman Sepeda Harian (Casual vs Registered) - Q4 2012", fontsize=14, fontweight="bold")
     ax.set_xlabel("Tanggal")
@@ -61,8 +69,14 @@ elif option == "Pada jam berapa peminjaman sepeda paling tinggi dalam sehari, da
     # Kategorikan hari kerja dan akhir pekan
     hour_df["day_type"] = hour_df["weekday"].apply(lambda x: "Weekday" if x < 5 else "Weekend")
 
+    # Tambahkan slider untuk memilih rentang jam
+    min_hour, max_hour = st.sidebar.slider("Pilih rentang jam", 0, 23, (0, 23))
+
+    # Filter data berdasarkan rentang jam
+    filtered_hour_df = hour_df[(hour_df["hr"] >= min_hour) & (hour_df["hr"] <= max_hour)]
+
     # Hitung rata-rata peminjaman per jam untuk tiap kategori hari
-    hourly_avg = hour_df.groupby(["hr", "day_type"])["cnt"].mean().reset_index()
+    hourly_avg = filtered_hour_df.groupby(["hr", "day_type"])["cnt"].mean().reset_index()
 
     # Plot
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -82,8 +96,12 @@ elif option == "Analisis Lanjutan Dengan Metode Clustering":
     peak_hours = [7, 8, 17, 18, 19]  # Jam sibuk
     hour_df["hour_category"] = hour_df["hr"].apply(lambda x: "Peak Hours" if x in peak_hours else "Off-Peak Hours")
 
+    # Tambahkan slider untuk memilih rentang jam
+    min_hour, max_hour = st.sidebar.slider("Pilih rentang jam", 0, 23, (0, 23))
+    filtered_hour_df = hour_df[(hour_df["hr"] >= min_hour) & (hour_df["hr"] <= max_hour)]
+
     # Hitung rata-rata peminjaman per jam
-    hourly_avg = hour_df.groupby(["hr", "hour_category"])["cnt"].mean().reset_index()
+    hourly_avg = filtered_hour_df.groupby(["hr", "hour_category"])["cnt"].mean().reset_index()
 
     # Plot
     fig, ax = plt.subplots(figsize=(12, 6))
