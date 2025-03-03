@@ -1,8 +1,4 @@
-# Proyek Analisis Data: Bike Sharing Dataset  
-
-**Nama**: Kunti Najma Jalia  
-**Email**: kuntinajma@gmail.com  
-**ID Dicoding**: MC466D5X1782  
+# Proyek Analisis Data: Bike Sharing Dataset 
 
 ## Deskripsi Proyek  
 Proyek ini bertujuan untuk menganalisis pola peminjaman sepeda berdasarkan dataset **Bike Sharing**. Analisis mencakup:  
